@@ -11,10 +11,15 @@ describe "StaticPages" do
         :text => "Sample App"
     end
 
-    it "should contain have the right title" do
+    it "should have the right title" do
       visit "/static_pages/home"
       page.should have_selector 'title',
-        :text => "#{base_title} | Home"
+        :text => "#{base_title}"
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title', :text => '| Home')
     end
   end
 
@@ -25,7 +30,7 @@ describe "StaticPages" do
         :text => "Help"
     end
 
-    it "should contain have the right title" do
+    it "should have the right title" do
       visit "/static_pages/help"
       page.should have_selector 'title',
         :text => "#{base_title} | Help"
@@ -39,7 +44,7 @@ describe "StaticPages" do
         :text => "About Us"
     end
 
-    it "should contain have the right title" do
+    it "should have the right title" do
       visit "/static_pages/about"
       page.should have_selector 'title',
         :text => "#{base_title} | About Us"
@@ -53,7 +58,7 @@ describe "StaticPages" do
         :text => "Contact Us"
     end
 
-    it "should contain have the right title" do
+    it "should have the right title" do
       visit "/static_pages/contact"
       page.should have_selector 'title',
         :text => "#{base_title} | Contact Us"
